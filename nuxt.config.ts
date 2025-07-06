@@ -2,6 +2,17 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
+  app:{
+    head:{
+      title: 'Scribbl',
+      meta:[
+        {name: 'description', content: 'Scribbl is a platform for creating and sharing your ideas.'}
+      ],
+      link:[
+        {rel: 'icon', type: 'image/x-icon', href: '/Logo.svg'}
+      ]
+    }
+  },
   compatibilityDate: '2025-05-15',
   future:{
     compatibilityVersion: 4,
