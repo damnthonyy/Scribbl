@@ -1,7 +1,7 @@
 <template>
-    <main class="flex flex-col items-center justify-center gap-[30px]">
-        <div class="flex flex-col items-center justify-center gap-[10px]">
-            <span class="text-[48px] font-medium">
+    <main class="flex flex-col items-center justify-center gap-[30px] px-[20px] py-[40px]">
+        <div class="flex flex-col items-center justify-center gap-[10px] text-center">
+            <span class="text-[32px] md:text-[48px] font-medium sm:text-[21px]">
                 ✍️ Minimaliste & clair
             </span>
             <span class="text-[20px] font-medium">
@@ -11,7 +11,7 @@
                 Un espace de prise de notes simple, rapide et rien que pour vous.
             </span>
         </div>
-        <div class="flex items-center gap-[20px] ">
+        <div class="flex flex-col sm:flex-row items-center gap-[15px] sm:gap-[20px]">
             <Button variant="primary" size="sm">
                 <span>
                     Sign in
