@@ -16,6 +16,7 @@
         variant?: keyof typeof Variant;
         size?: keyof typeof Size;
         icon?:string;
+        disabled?:boolean;
     }
 
     const props = withDefaults(defineProps<PropsButton>(),{
@@ -23,14 +24,19 @@
         variant: Variant.primary,
         size: Size.md,
         icon: '',
+        disabled: false,
     })
 
     const buttonVariantClasses = computed(()=>{
         const variant ={
-            [Variant.primary]:'bg-black text-white',
-            [Variant.outline]:'bg-white text-black border border-black',
+            [Variant.primary]: props.disabled ? 'bg-gray-300 text-white' : 'bg-black text-white',
+            [Variant.outline]: props.disabled ? 'bg-white text-gray-300 border border-gray-300' : 'bg-white text-black border border-black',
         }
         return variant[props.variant]
+    })
+
+    const buttonDisabledClasses = computed(()=>{
+        return props.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
     })
 
     const buttonSizeClasses = computed(()=>{
@@ -45,7 +51,7 @@
 
 
 <template>
-    <button :class="[buttonVariantClasses, buttonSizeClasses]" :type="props.type" class="rounded-[8px]">
+    <button :class="[buttonVariantClasses, buttonSizeClasses, buttonDisabledClasses]" :type="props.type" class="rounded-[8px]">
         <span class="flex items-center justify-center">
             <slot/>
         </span>
