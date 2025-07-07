@@ -21,5 +21,8 @@ export default defineNuxtConfig({
   css:['~/assets/styles/global.css'],
   vite:{
     plugins:[tailwindcss()]
-  }
+  },
+  components:[
+    {path: '~/src/components/ui', extensions: ['vue']}
+  ],
 })
