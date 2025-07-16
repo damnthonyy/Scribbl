@@ -17,11 +17,14 @@
                     Sign in
                 </span>
             </Button>
-            <Button variant="outline" size="sm">
+            <NuxtLink to="/signUp">
+                <Button variant="outline" size="sm">
                 <span>
                     Sign up
                 </span>
             </Button>
+            </NuxtLink>
+
         </div>
     </main>
 </template>
