@@ -13,16 +13,23 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   compatibilityDate: '2025-05-15',
+
   future:{
     compatibilityVersion: 4,
   },
+
   devtools: { enabled: true },
   css:['~/assets/styles/global.css'],
+
   vite:{
     plugins:[tailwindcss()]
   },
+
   components:[
     {path: '~/src/components/ui', extensions: ['vue']}
   ],
+
+  modules: ['@nuxtjs/supabase'],
 })
