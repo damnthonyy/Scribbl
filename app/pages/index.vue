@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import Button from '~/components/ui/Button.vue';
+import Button from '~/components/ui/BaseButton.vue';
 
 definePageMeta({
     layout: 'custom',

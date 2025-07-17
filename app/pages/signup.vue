@@ -3,7 +3,7 @@ definePageMeta({
     layout: 'custom',
 })
 
-import Button from '~/components/ui/Button.vue'
+import Button from '~/components/ui/BaseButton.vue'
 import { SupabaseClient } from '@supabase/supabase-js'
 import { navigateTo } from '#app'
 
