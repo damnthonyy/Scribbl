@@ -1,5 +1,6 @@
 <template>
-    <input 
+    <div class="relative w-full">
+        <input 
         :type="getInputType()"
         :placeholder="props.placeholder"
         :disabled="props.disabled"
@@ -8,21 +9,24 @@
         :id="props.id"
         :value="modelValue"
         @input="handleInput"
-    >
-    <div v-if="props.icon" class="relative">    
-        <slot name="icon"/>
+    />
+        <div class="absolute top-1/2 right-2 -translate-y-1/2">
+            <slot name="icon"/>
+        </div>
+        
+        <div v-if="props.error" class="text-[12px] text-red-500">
+            <slot name="error"/>
+        </div>
+
     </div>
-    <div v-if="props.error" class="text-[12px] text-red-500">
-        <slot name="error"/>
-    </div>
+    
 </template>
 
 <script setup lang="ts">
     interface PropsInput{
-        type: 'email' | 'password' | 'lastname' | 'firstname';
+        type: 'email' | 'password' | 'lastname' | 'firstname' | 'text';
         placeholder: string;
         disabled?: boolean;
-        icon?: string;
         error?: string;
         id?: string;
         modelValue?: string;
@@ -48,11 +52,13 @@
     const getInputType = () => {
         switch(props.type) {
             case 'email':
-                return 'email'
+                return 'text'
             case 'password':
-                return 'password'
+                return showPassword.value ? 'text' : 'password'
             case 'firstname':
             case 'lastname':
+                return 'text'
+            case 'text':
                 return 'text'
             default:
                 return 'text'
@@ -62,5 +68,12 @@
     const handleInput = (event: Event) => {
         const target = event.target as HTMLInputElement
         emit('update:modelValue', target.value)
+    }
+
+    const password = ref('')
+    const showPassword = ref(false)
+    
+    const togglePasswordVisibility = ()=>{
+        showPassword.value = !showPassword.value
     }
 </script>

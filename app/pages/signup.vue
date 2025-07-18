@@ -7,6 +7,7 @@ import Button from '~/components/ui/BaseButton.vue'
 import BaseInput from '~/components/ui/BaseInput.vue'
 import { SupabaseClient } from '@supabase/supabase-js'
 import { navigateTo } from '#app'
+import { ref } from 'vue'
 
 const email = ref('')
 const password = ref('')
@@ -89,7 +90,7 @@ const handleSignUp = async () => {
         
         //redirect to signin page after 2 seconds
         setTimeout(() => {
-            return navigateTo('/signin')
+            return navigateTo('/dashboard')
         }, 2000)
 
     } catch (err) {
@@ -100,7 +101,10 @@ const handleSignUp = async () => {
     }
 }
 
-
+const showPassword = ref(false)
+const togglePasswordVisibility = ()=>{
+    showPassword.value = !showPassword.value
+}
 </script>
 
 <template>
@@ -114,7 +118,7 @@ const handleSignUp = async () => {
                 <BaseInput 
                     id="email"
                     type="email" 
-                    placeholder="john@doe.com" 
+                    placeholder="Ex: John@doe.com" 
                     v-model="email"
                     class="mb-[10px]"
                 />
@@ -124,17 +128,25 @@ const handleSignUp = async () => {
                 <label for="password" class=" font-[500] text-[17px]">Password</label>
                 <BaseInput 
                     id="password"
-                    type="password" 
+                    :type="showPassword ? 'text' : 'password'" 
                     placeholder="********" 
                     v-model="password"
                     class="mb-[10px]"
-                />
+                >
+                    <template #icon>
+                        <button type="button" @click="togglePasswordVisibility" class="absolute top-1/2 right-2 -translate-y-1/2 bg-transparent border-none w-[20px] h-[20px] cursor-pointer" >
+                            <Icon :name="showPassword ? 'mdi:eye-off' : 'mdi:eye'" class="w-full h-full text-gray-500 hover:text-black"/>
+                        </button>
+                    </template>
+                </BaseInput>
+                    
+    
             </div>
 
             
             <div class="flex flex-col gap-[8px]">
                 <label for="firstname" class=" font-[500] text-[17px]">Firstname</label>
-                <BaseInput 
+                <BaseInput
                     id="firstname"
                     type="firstname" 
                     placeholder="John" 
@@ -162,6 +174,7 @@ const handleSignUp = async () => {
             </Button>
             <p v-if="error" class="text-red-500 mt-[10px]">{{ error }}</p>
             <p v-if="success" class="text-green-500 mt-[10px]">{{ success }}</p>
+            <p class="text-gray-500 mt-[10px]">Already have an account? <NuxtLink to="/signin" class="text-blue-500">Sign in</NuxtLink></p>
         </form>
     </section>
 
