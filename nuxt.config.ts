@@ -25,4 +25,13 @@ export default defineNuxtConfig({
   components:[
     {path: '~/src/components/ui', extensions: ['vue']}
   ],
+  runtimeConfig:{
+    public:{
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_KEY
+    }
+  },
+  modules:[
+    '@nuxt/icon'
+  ],
 })

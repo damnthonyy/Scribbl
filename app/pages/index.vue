@@ -17,17 +17,20 @@
                     Sign in
                 </span>
             </Button>
-            <Button variant="outline" size="sm">
+            <NuxtLink to="/signUp">
+                <Button variant="outline" size="sm">
                 <span>
                     Sign up
                 </span>
             </Button>
+            </NuxtLink>
+
         </div>
     </main>
 </template>
 
 <script setup lang="ts">
-import Button from '~/components/ui/Button.vue';
+import Button from '~/components/ui/BaseButton.vue';
 
 definePageMeta({
     layout: 'custom',
