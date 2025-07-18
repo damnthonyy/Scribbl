@@ -105,46 +105,57 @@ const handleSignUp = async () => {
 
 <template>
 
-    <section class="p-[20px]">
+    <section class="p-[20px] flex justify-center items-center">
 
-        <form @submit.prevent="handleSignUp" class="flex flex-col">
-            <label for="email" class="mb-[5px] font-medium">Email</label>
-            <BaseInput 
-                id="email"
-                type="email" 
-                placeholder="Email" 
-                v-model="email"
-                class="mb-[10px]"
-            />
+        <form @submit.prevent="handleSignUp" class="flex flex-col gap-[24px] justify-center items-center w-[283px] pt-[100px]">
+    
+            <div class="flex flex-col gap-[8px]">
+                <label for="email" class=" font-[500] text-[17px]">Email</label>
+                <BaseInput 
+                    id="email"
+                    type="email" 
+                    placeholder="john@doe.com" 
+                    v-model="email"
+                    class="mb-[10px]"
+                />
+            </div>
             
-            <label for="password" class="mb-[5px] font-medium">Mot de passe</label>
-            <BaseInput 
-                id="password"
-                type="password" 
-                placeholder="Mot de passe" 
-                v-model="password"
-                class="mb-[10px]"
-            />
+            <div class="flex flex-col gap-[8px]">
+                <label for="password" class=" font-[500] text-[17px]">Password</label>
+                <BaseInput 
+                    id="password"
+                    type="password" 
+                    placeholder="********" 
+                    v-model="password"
+                    class="mb-[10px]"
+                />
+            </div>
+
             
-            <label for="firstname" class="mb-[5px] font-medium">Prénom</label>
-            <BaseInput 
-                id="firstname"
-                type="firstname" 
-                placeholder="Prénom" 
-                v-model="firstname"
-                class="mb-[10px]"
-            />
+            <div class="flex flex-col gap-[8px]">
+                <label for="firstname" class=" font-[500] text-[17px]">Firstname</label>
+                <BaseInput 
+                    id="firstname"
+                    type="firstname" 
+                    placeholder="John" 
+                    v-model="firstname"
+                    class="mb-[10px]"
+                />
+            </div>
             
-            <label for="lastname" class="mb-[5px] font-medium">Nom</label>
-            <BaseInput 
-                id="lastname"
-                type="lastname" 
-                placeholder="Nom" 
-                v-model="lastname"
-                class="mb-[10px]"
-            />
+            <div class="flex flex-col gap-[8px]">
+                <label for="lastname" class=" font-[500] text-[17px]">Lastname</label>
+                <BaseInput 
+                    id="lastname"
+                    type="lastname" 
+                    placeholder="Doe" 
+                    v-model="lastname"
+                    class="mb-[10px]"
+                />
+            </div>
+
             
-            <Button variant="primary" size="md" type="submit" :disabled="loading">
+            <Button variant="primary" type="submit" :disabled="loading" class="w-full">
                 <span>
                     {{ loading ? 'Inscription en cours...' : 'Sign Up' }}
                 </span>
