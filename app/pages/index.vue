@@ -12,11 +12,14 @@
             </span>
         </div>
         <div class="flex justify-center align-center sm:flex items-center justify-center gap-[15px] md:gap-[20px]">
-            <Button variant="primary" size="sm">
-                <span>
-                    Sign in
-                </span>
-            </Button>
+            <NuxtLink to="/signin">
+                <Button variant="primary" size="sm">
+                    <span>
+                        Sign in
+                    </span>
+                </Button>
+            </NuxtLink>
+            
             <NuxtLink to="/signUp">
                 <Button variant="outline" size="sm">
                 <span>
